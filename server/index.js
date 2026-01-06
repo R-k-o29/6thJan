@@ -24,3 +24,5 @@ app.use('/api/website/library',libraryRouter);
 
 //http:localhost:3005/api/website/library/insert
 //http:localhost:3005/api/website/library/update
+//http:localhost:3005/api/website/library/delete/id
+//http:localhost:3005/api/website/library/update/id

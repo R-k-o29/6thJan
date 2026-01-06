@@ -23,5 +23,37 @@ let bookInsert = (req,res)=>{
     })
 }
 
+let bookView = async(req,res) =>{
+    let viewObj = await libraryModel.find();
+    res.send({
+        status:1,
+        msg:"Available Books",
+        viewObj
+    })
+}
 
-module.exports = {bookInsert};
+let bookDelete = async(req,res)=>{
+    let bookId = req.params.id;
+    let delRes = await libraryModel.deleteOne({_id:bookId});
+
+    res.send({
+        status:1,
+        msg:"Deleted succesfully",
+        delRes
+    })
+}
+
+let bookUpdate = async(req,res)=>{
+    let bookId = req.params.id;
+    let {bCode,bName,bAuthor,bPrice} = req.body;
+    let newObj = {bCode,bName,bAuthor,bPrice};
+
+    let updateRes = await libraryModel.updateOne({_id:bookId},newObj);
+    res.send({
+        status:1,
+        msg:"Updated the book details",
+        updateRes
+    })
+}
+
+module.exports = {bookInsert,bookView,bookDelete,bookUpdate};
