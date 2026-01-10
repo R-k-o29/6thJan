@@ -56,4 +56,14 @@ let bookUpdate = async(req,res)=>{
     })
 }
 
-module.exports = {bookInsert,bookView,bookDelete,bookUpdate};
+let getSingleBook = async(req,res)=>{
+    let id=req.params.id;
+    let viewRes = await libraryModel.findOne({_id:id});
+    res.send({
+        status:1,
+        msg:"Book details",
+        viewRes
+    })
+}
+
+module.exports = {bookInsert,bookView,bookDelete,bookUpdate,getSingleBook};
